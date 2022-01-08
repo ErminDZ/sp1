@@ -45,6 +45,10 @@ public class Owner implements Serializable {
         this.phone = phone;
     }
 
+    public void AddBoat(Boat boat){
+        boatList.add(boat);
+    }
+
     public int getId() {
         return id;
     }
@@ -84,4 +88,5 @@ public class Owner implements Serializable {
     public void setBoatList(List<Boat> boatList) {
         this.boatList = boatList;
     }
+
 }

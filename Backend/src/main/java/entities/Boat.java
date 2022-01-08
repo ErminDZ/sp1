@@ -13,8 +13,8 @@ public class Boat implements Serializable {
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "Id")
-    private int id;
+    @Column(name = "boat_id")
+    private int boat_id;
 
     @Basic(optional = false)
     @NotNull
@@ -45,7 +45,7 @@ public class Boat implements Serializable {
     public Boat() {}
 
     public Boat(int id, String brand, String make, String name, String image) {
-        this.id = id;
+        this.boat_id = id;
         this.brand = brand;
         this.make = make;
         this.name = name;
@@ -53,11 +53,11 @@ public class Boat implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return boat_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int boat_id) {
+        this.boat_id = boat_id;
     }
 
     public String getBrand() {
