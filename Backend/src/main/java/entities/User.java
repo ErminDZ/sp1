@@ -34,8 +34,6 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
-  @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
       return null;

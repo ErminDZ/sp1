@@ -1,6 +1,7 @@
 package rest;
 
 import com.google.gson.Gson;
+import entities.Owner;
 import entities.User;
 
 import java.sql.*;
@@ -84,5 +85,18 @@ public class RenameMeResource {
         return result;
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("owner")
+    public List<Owner> ShowAllOwners() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Owner> query = em.createQuery("SELECT o from Owner o", Owner.class);
+        List<Owner> result = query.getResultList();
+        return result;
+    }
 
+    public void main(String[] args) throws Exception{
+        ShowAllOwners();
+
+    }
 }

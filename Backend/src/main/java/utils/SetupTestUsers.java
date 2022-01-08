@@ -1,6 +1,7 @@
 package utils;
 
 
+import entities.Owner;
 import entities.Role;
 import entities.User;
 
@@ -25,6 +26,8 @@ public class SetupTestUsers {
     User admin = new User("admin", "12345");
     User both = new User("user_admin", "1234");
 
+    Owner Ermin = new Owner(1,"ermin","kisumparken",1234567789);
+
 
 
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
@@ -43,6 +46,7 @@ public class SetupTestUsers {
     em.persist(user);
     em.persist(admin);
     em.persist(both);
+    em.persist(Ermin);
     em.getTransaction().commit();
     System.out.println("PW: " + user.getUserPass());
     System.out.println("Testing user with OK password: " + user.verifyPassword("test"));
