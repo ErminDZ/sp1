@@ -32,7 +32,7 @@ public class Boat implements Serializable {
     @ManyToOne
     private Harbour harbour;
 
-    @ManyToMany (mappedBy = "boatList")
+    @ManyToMany (mappedBy = "boats", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Owner> ownerList;
 
     public Boat() {}

@@ -19,6 +19,7 @@ import NoMatch from "./Components/NoMatch";
 import React, { useState,useEffect } from "react";
 import facade from "./ApiFacade";
 import Home from "./Components/Home";
+import Owner from "./Components/Owner";
 
 
 
@@ -56,6 +57,9 @@ function App() {
                          <Route exact path="/">
                          <Home />
                          </Route>
+                        <Route exact path="/owner">
+                            <Owner />
+                        </Route>
                         <NoMatch />
                     </Switch>
                 </div>)}

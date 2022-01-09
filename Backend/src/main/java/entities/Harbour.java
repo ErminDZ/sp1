@@ -25,7 +25,7 @@ public class Harbour implements Serializable {
     private int capacity;
 
     @OneToMany(mappedBy = "harbour", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Boat> boatList;
+    private List<Boat> boats;
 
     public Harbour() { }
 
@@ -69,10 +69,10 @@ public class Harbour implements Serializable {
     }
 
     public List<Boat> getBoatList() {
-        return boatList;
+        return boats;
     }
 
-    public void setBoatList(List<Boat> boatList) {
-        this.boatList = boatList;
+    public void setBoatList(List<Boat> boats) {
+        this.boats = boats;
     }
 }

@@ -27,7 +27,7 @@ public class Owner implements Serializable {
     private int phone;
 
     @ManyToMany
-    private List<Boat> boatList = new ArrayList<>();
+    private List<Boat> boats = new ArrayList<>();
 
     public Owner() {
     }
@@ -40,7 +40,11 @@ public class Owner implements Serializable {
     }
 
     public void AddBoat(Boat boat){
-        boatList.add(boat);
+        boats.add(boat);
+    }
+
+    public List<Boat> getBoats() {
+        return boats;
     }
 
     public Long getId() {
@@ -73,14 +77,6 @@ public class Owner implements Serializable {
 
     public void setPhone(int phone) {
         this.phone = phone;
-    }
-
-    public List<Boat> getBoatList() {
-        return boatList;
-    }
-
-    public void setBoatList(List<Boat> boatList) {
-        this.boatList = boatList;
     }
 
 }
