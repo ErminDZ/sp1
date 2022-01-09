@@ -9,26 +9,20 @@ import java.util.List;
 @Entity
 @Table(name = "owner")
 public class Owner implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "Id")
-    private int id;
+    private Long id;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "name")
     private String name;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "address")
     private String address;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "phone")
     private int phone;
 
@@ -38,7 +32,7 @@ public class Owner implements Serializable {
     public Owner() {
     }
 
-    public Owner(int id, String name, String address, int phone) {
+    public Owner(Long id, String name, String address, int phone) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -49,11 +43,11 @@ public class Owner implements Serializable {
         boatList.add(boat);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

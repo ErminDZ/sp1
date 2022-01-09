@@ -4,37 +4,35 @@ import entities.Boat;
 
 public class BoatDTO {
 
-    private int id;
+    private Long id;
     private String brand;
     private String image;
     private String make;
     private String name;
-    private int harbour_id;
+
 
 
     public BoatDTO(BoatDTO b) {
-        this.id = b.getId();
+        this.id = Long.valueOf(b.getId());
         this.brand = b.getBrand();
         this.image = b.getImage();
         this.make = b.getMake();
         this.name = b.getName();
-        this.harbour_id = b.harbour_id;
     }
 
-    public BoatDTO(int id, String brand, String image, String make, String name, int harbour_id) {
+    public BoatDTO(Long id, String brand, String image, String make, String name) {
         this.id = id;
         this.brand = brand;
         this.image = image;
         this.make = make;
         this.name = name;
-        this.harbour_id = harbour_id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,11 +68,4 @@ public class BoatDTO {
         this.name = name;
     }
 
-    public int getHarbour_id() {
-        return harbour_id;
-    }
-
-    public void setHarbour_id(int harbour_id) {
-        this.harbour_id = harbour_id;
-    }
 }

@@ -4,30 +4,30 @@ import entities.Owner;
 
 public class OwnerDTO {
 
-    private int id;
+    private Long id;
     private String name;
     private String address;
     private int phone;
 
     public OwnerDTO(Owner O) {
-        this.id = O.getId();
+        this.id = Long.valueOf(O.getId());
         this.name = O.getName();
         this.address = O.getAddress();
         this.phone = O.getPhone();
     }
 
-    public OwnerDTO(int id, String name, String address, int phone) {
+    public OwnerDTO(Long id, String name, String address, int phone) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

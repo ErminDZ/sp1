@@ -9,30 +9,23 @@ import java.util.List;
 @Entity
 @Table(name = "boat")
 public class Boat implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "boat_id")
     private int boat_id;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "brand")
     private String brand;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "make")
     private String make;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "name")
     private String name;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "image")
     private String image;
 

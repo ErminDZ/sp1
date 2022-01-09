@@ -24,10 +24,10 @@ public class SetupTestUsers {
     User admin = new User("admin", "1234");
     User both = new User("user_admin", "12345");
 
-    Owner owner1 = new Owner(1L,"ermin","kisumparken",1234567789);
+   // Owner owner1 = new Owner(1L,"ermin","kisumparken",1234567789);
 
     // Boat boat = new Boat("mej","hej","BMW","Ermin");
-    Harbour harbour = new Harbour("hejg","geogn",1);
+   // Harbour harbour = new Harbour("hejg","geogn",1);
 
 
 
@@ -47,9 +47,9 @@ public class SetupTestUsers {
     em.persist(user);
     em.persist(admin);
     em.persist(both);
-    em.persist(owner1);
+   // em.persist(owner1);
    // em.persist(boat);
-    em.persist(harbour);
+  //  em.persist(harbour);
     em.getTransaction().commit();
 //    System.out.println("PW: " + user.getUserPass());
 //    System.out.println("Testing user with OK password: " + user.verifyPassword("test"));

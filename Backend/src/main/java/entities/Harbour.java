@@ -8,25 +8,19 @@ import java.util.List;
 @Table(name = "harbour")
 public class Harbour implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "Id")
-    private int id;
+    private Long id;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "name")
     private String name;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "address")
     private String address;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "capacity")
     private int capacity;
 
@@ -35,18 +29,18 @@ public class Harbour implements Serializable {
 
     public Harbour() { }
 
-    public Harbour(int id, String name, String address, int capacity) {
+    public Harbour(Long id, String name, String address, int capacity) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.capacity = capacity;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
