@@ -1,6 +1,8 @@
 package rest;
 
 import com.google.gson.Gson;
+import dtos.BoatDTO;
+import entities.Boat;
 import entities.Owner;
 import entities.User;
 
@@ -18,6 +20,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.PathParam;
 
+import facades.MainFacade;
 import utils.EMF_Creator;
 
 /**
@@ -30,6 +33,7 @@ public class RenameMeResource {
     Gson gson = new Gson();
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+    private static final MainFacade MAIN_FACADE = MainFacade.getMainFacade(EMF);
 
     @Context
     private UriInfo context;
@@ -95,8 +99,33 @@ public class RenameMeResource {
         return result;
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("boat")
+    public List<Boat> GetInfoFromBoat() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Boat> query = em.createQuery("SELECT b from Boat b join b.harbour h where h.name=:name ", entities.Boat.class);
+        List<Boat> result = query.getResultList();
+        return result;
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("admin")
+    @Path("AddBoat")
+    public String AddBoat(String jsonString) throws SQLException {
+        System.out.println(jsonString);
+        BoatDTO bDTO = gson.fromJson(jsonString, BoatDTO.class);
+        System.out.println("id: " + bDTO.getId() + " brand: " + bDTO.getBrand() + " make: " + bDTO.getMake() + " name: " + bDTO.getName()+ " image: " + bDTO.getImage()+ " harbour_id: " + bDTO.getId());
+        MAIN_FACADE.CreateBoat(bDTO);
+        return "{}";
+    }
+
+
     public void main(String[] args) throws Exception{
         ShowAllOwners();
+        GetInfoFromBoat();
 
     }
 }

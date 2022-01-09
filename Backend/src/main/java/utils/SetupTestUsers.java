@@ -1,9 +1,7 @@
 package utils;
 
 
-import entities.Owner;
-import entities.Role;
-import entities.User;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,11 +20,14 @@ public class SetupTestUsers {
     // Whatever you do DO NOT COMMIT and PUSH with the real passwords
 
 
-    User user = new User("user", "1234");
-    User admin = new User("admin", "12345");
-    User both = new User("user_admin", "1234");
+    User user = new User("user", "123");
+    User admin = new User("admin", "1234");
+    User both = new User("user_admin", "12345");
 
-    Owner Ermin = new Owner(1,"ermin","kisumparken",1234567789);
+    Owner owner1 = new Owner(1L,"ermin","kisumparken",1234567789);
+
+    // Boat boat = new Boat("mej","hej","BMW","Ermin");
+    Harbour harbour = new Harbour("hejg","geogn",1);
 
 
 
@@ -46,13 +47,15 @@ public class SetupTestUsers {
     em.persist(user);
     em.persist(admin);
     em.persist(both);
-    em.persist(Ermin);
+    em.persist(owner1);
+   // em.persist(boat);
+    em.persist(harbour);
     em.getTransaction().commit();
-    System.out.println("PW: " + user.getUserPass());
-    System.out.println("Testing user with OK password: " + user.verifyPassword("test"));
-    System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
-    System.out.println("Created TEST Users");
-    System.out.println("Created 4 movies in database for test");
+//    System.out.println("PW: " + user.getUserPass());
+//    System.out.println("Testing user with OK password: " + user.verifyPassword("test"));
+//    System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
+//    System.out.println("Created TEST Users");
+//    System.out.println("Created 4 movies in database for test");
 
 
   }
