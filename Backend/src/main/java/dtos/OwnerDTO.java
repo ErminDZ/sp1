@@ -2,18 +2,23 @@ package dtos;
 
 import entities.Owner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OwnerDTO {
 
     private Long id;
     private String name;
     private String address;
     private int phone;
+    private List<BoatDTO> boat = new ArrayList<>();
 
     public OwnerDTO(Owner O) {
-        this.id = Long.valueOf(O.getId());
+        this.id = O.getId();
         this.name = O.getName();
         this.address = O.getAddress();
         this.phone = O.getPhone();
+        O.getBoats().forEach(o -> boat.add(new BoatDTO(o)));
     }
 
     public OwnerDTO(Long id, String name, String address, int phone) {

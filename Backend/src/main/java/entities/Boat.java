@@ -4,6 +4,7 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class Boat implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "boat_id")
-    private int boat_id;
+    private Long boat_id;
 
     @Column(name = "brand")
     private String brand;
@@ -37,19 +38,21 @@ public class Boat implements Serializable {
 
     public Boat() {}
 
-    public Boat(int id, String brand, String make, String name, String image) {
+    public Boat(Long id, String brand, String make, String name, String image) {
         this.boat_id = id;
         this.brand = brand;
         this.make = make;
         this.name = name;
         this.image = image;
+
+        this.ownerList = new ArrayList<>();
     }
 
-    public int getId() {
+    public Long getId() {
         return boat_id;
     }
 
-    public void setId(int boat_id) {
+    public void setId(Long boat_id) {
         this.boat_id = boat_id;
     }
 
@@ -85,19 +88,19 @@ public class Boat implements Serializable {
         this.image = image;
     }
 
+    public List<Owner> getOwnerList() {
+        return ownerList;
+    }
+
+    public void addOwnerList(Owner owner) {
+        ownerList.add(owner);
+    }
+
     public Harbour getHarbour() {
         return harbour;
     }
 
     public void setHarbour(Harbour harbour) {
         this.harbour = harbour;
-    }
-
-    public List<Owner> getOwnerList() {
-        return ownerList;
-    }
-
-    public void setOwnerList(List<Owner> OwnerList) {
-        this.ownerList = ownerList;
     }
 }

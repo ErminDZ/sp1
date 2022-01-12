@@ -21,6 +21,8 @@ import facade from "./ApiFacade";
 import Home from "./Components/Home";
 import Owner from "./Components/Owner";
 import CreateBoat from "./Components/CreateBoat";
+import Boat from "./Components/Boat";
+import Harbour from "./Components/Harbour";
 
 
 
@@ -63,6 +65,12 @@ function App() {
                         </Route>
                         <Route exact path="/CreateBoat">
                             <CreateBoat />
+                        </Route>
+                        <Route exact path="/Boat">
+                            <Boat />
+                        </Route>
+                        <Route exact path="/Harbour">
+                            <Harbour />
                         </Route>
                         <NoMatch />
                     </Switch>

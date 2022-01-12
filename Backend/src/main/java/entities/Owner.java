@@ -37,6 +37,7 @@ public class Owner implements Serializable {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.boats = new ArrayList<>();
     }
 
     public void AddBoat(Boat boat){

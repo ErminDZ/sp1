@@ -9,15 +9,17 @@ public class BoatDTO {
     private String image;
     private String make;
     private String name;
+    private Long harbour;
 
 
 
-    public BoatDTO(BoatDTO b) {
+    public BoatDTO(Boat b) {
         this.id = Long.valueOf(b.getId());
         this.brand = b.getBrand();
         this.image = b.getImage();
         this.make = b.getMake();
         this.name = b.getName();
+        this.harbour = b.getHarbour().getId();
     }
 
     public BoatDTO(Long id, String brand, String image, String make, String name) {
@@ -27,6 +29,8 @@ public class BoatDTO {
         this.make = make;
         this.name = name;
     }
+
+
 
     public Long getId() {
         return id;

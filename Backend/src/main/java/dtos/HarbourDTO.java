@@ -2,18 +2,23 @@ package dtos;
 
 import entities.Harbour;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HarbourDTO {
 
     private Long id;
     private String address;
     private int capacity;
     private String name;
+    private List<BoatDTO> boat = new ArrayList<>();
 
-    public HarbourDTO(Harbour h) {
-        this.id = Long.valueOf(h.getId());
-        this.address = h.getAddress();
-        this.capacity = h.getCapacity();
-        this.name = h.getName();
+    public HarbourDTO(Harbour H) {
+        this.id = Long.valueOf(H.getId());
+        this.address = H.getAddress();
+        this.capacity = H.getCapacity();
+        this.name = H.getName();
+        H.getBoatList().forEach(h -> boat.add(new BoatDTO(h)));
     }
 
     public HarbourDTO(Long id, String address, int capacity, String name) {

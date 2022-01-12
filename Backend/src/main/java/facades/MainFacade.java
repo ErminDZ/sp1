@@ -52,7 +52,7 @@ public class MainFacade {
             Boat boat = em.find(Boat.class, bDto.getId());
 
             if (boat!= null) {
-                harbour.addboats(boat);
+                harbour.addBoatList(boat);
                 boat.setHarbour(harbour);
             }
 

@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import dtos.BoatDTO;
 import entities.Boat;
+import entities.Harbour;
 import entities.Owner;
 import entities.User;
 
@@ -102,9 +103,29 @@ public class RenameMeResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("boat")
-    public List<Boat> AddBoatToHarbour(String name) throws SQLException {
+    public List<Boat> ShowAllBoats() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <Boat> query = em.createQuery("SELECT b, b.harbour from Boat b join FETCH b.harbour h where h.name=:name ", entities.Boat.class);
+        TypedQuery <Boat> query = em.createQuery("SELECT b from Boat b", Boat.class);
+        List<Boat> result = query.getResultList();
+        return result;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("harbour")
+    public List<Harbour> ShowAllHarbour() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Harbour> query = em.createQuery("SELECT h from Harbour h", Harbour.class);
+        List<Harbour> result = query.getResultList();
+        return result;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("harbourwithboat")
+    public List<Boat> AddBoatToHarbour(String jsonString) throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Boat> query = em.createQuery("", entities.Boat.class);
         List<Boat> result = query.getResultList();
         return result;
     }
@@ -126,6 +147,8 @@ public class RenameMeResource {
     public void main(String[] args) throws Exception{
         ShowAllOwners();
         AddBoatToHarbour("name");
+        ShowAllBoats();
+        ShowAllHarbour();
 
     }
 }

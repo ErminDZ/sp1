@@ -31,6 +31,18 @@ function Menu () {
                         <NavLink exact active className="active nav-link" to="#"></NavLink>
                     </li>
                     <li className="nav-item">
+                        <NavLink exact active className="active nav-link btn btn-primary text-white" to="/Boat">boat</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink exact active className="active nav-link" to="#"></NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink exact active className="active nav-link btn btn-primary text-white" to="/Harbour">harbour</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink exact active className="active nav-link" to="#"></NavLink>
+                    </li>
+                    <li className="nav-item">
                         <NavLink exact active className="active nav-link btn btn-primary text-white" to="/CreateBoat">create a boat</NavLink>
                     </li>
                 </ul>
