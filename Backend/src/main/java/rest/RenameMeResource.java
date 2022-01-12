@@ -102,14 +102,14 @@ public class RenameMeResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("boat")
-    public List<Boat> GetInfoFromBoat() throws SQLException {
+    public List<Boat> AddBoatToHarbour(String name) throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <Boat> query = em.createQuery("SELECT b from Boat b join b.harbour h where h.name=:name ", entities.Boat.class);
+        TypedQuery <Boat> query = em.createQuery("SELECT b, b.harbour from Boat b join FETCH b.harbour h where h.name=:name ", entities.Boat.class);
         List<Boat> result = query.getResultList();
         return result;
     }
 
-    @POST
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @RolesAllowed("admin")
@@ -125,7 +125,7 @@ public class RenameMeResource {
 
     public void main(String[] args) throws Exception{
         ShowAllOwners();
-        GetInfoFromBoat();
+        AddBoatToHarbour("name");
 
     }
 }

@@ -27,22 +27,44 @@ public class MainFacade {
 
     public boolean CreateBoat(BoatDTO bDto) {
         EntityManager em = emf.createEntityManager();
-        Owner owner = em.find(Owner.class, bDto.getName());
+        Owner owner = em.find(Owner.class,bDto.getName());
 
         if (owner != null) {
-            Harbour harbour = em.find(Harbour.class, bDto.getId());
+            Boat boat = em.find(Boat.class, bDto.getId());
 
-            if (harbour!= null) {
-
+            if (boat!= null) {
                 }
 
             em.getTransaction().begin();
             em.merge(owner);
-            em.merge(harbour);
             em.getTransaction().commit();
 
         }
 
         return true;
     }
+
+    public boolean AddBoatToHarbour(BoatDTO bDto) {
+        EntityManager em = emf.createEntityManager();
+        Harbour harbour = em.find(Harbour.class, bDto);
+
+        if (harbour != null) {
+            Boat boat = em.find(Boat.class, bDto.getId());
+
+            if (boat!= null) {
+                harbour.addboats(boat);
+                boat.setHarbour(harbour);
+            }
+
+            em.getTransaction().begin();
+            em.merge(harbour);
+            em.merge(boat);
+            em.getTransaction().commit();
+
+        }
+
+        return true;
+    }
+
+
 }

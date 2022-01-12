@@ -20,6 +20,7 @@ import React, { useState,useEffect } from "react";
 import facade from "./ApiFacade";
 import Home from "./Components/Home";
 import Owner from "./Components/Owner";
+import CreateBoat from "./Components/CreateBoat";
 
 
 
@@ -59,6 +60,9 @@ function App() {
                          </Route>
                         <Route exact path="/owner">
                             <Owner />
+                        </Route>
+                        <Route exact path="/CreateBoat">
+                            <CreateBoat />
                         </Route>
                         <NoMatch />
                     </Switch>
